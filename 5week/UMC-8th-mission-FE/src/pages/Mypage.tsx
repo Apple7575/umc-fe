@@ -57,7 +57,7 @@ const Mypage = () => {
             <div><strong>Email:</strong> {data?.data?.email || '-'}</div>
             <div><strong>Created At:</strong> {formatDate(data?.data?.createdAt)}</div>
             <div><strong>Updated At:</strong> {formatDate(data?.data?.updatedAt)}</div>
-            <img src={data?.data?.avatar as string}alt={'구글 로고'}/>
+            <img src="/images/google.png" style={{ width: "30px", height: "30px" }} />
             <button className='cursor=pointer bg-blue-500 text-white px-4 py-2 rounded-md' onClick={handleLogout}>로그아웃</button>
         </div>
     );
