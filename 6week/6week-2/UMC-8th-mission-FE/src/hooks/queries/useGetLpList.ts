@@ -9,10 +9,10 @@ const initialLpListData:ResponseLpListDto = {
   statusCode: 200,
   message: "",
   data: {
-    data:[]
-  },
-  nextCursor: 0,
-  hasNext: false
+    data: [],
+    nextCursor: null,
+    hasNext: false
+  }
 }
 
 function useGetLpList({ cursor, search, order, limit }: PaginationDTO) {
@@ -30,7 +30,7 @@ function useGetLpList({ cursor, search, order, limit }: PaginationDTO) {
       //enabled: Boolean(search),
       //refetchInterval: 1000*5
       //retry: 3,
-      initialData: initialLpListData
+      //initialData: initialLpListData
   });
 }
 
