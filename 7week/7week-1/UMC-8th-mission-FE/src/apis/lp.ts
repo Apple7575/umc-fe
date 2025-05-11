@@ -5,10 +5,11 @@ import { RequestLpDto, ResponseLikeLpDto, ResponseLpDto, ResponseLpListDto } fro
 export const getLpList = async (
     pagination: PaginationDTO,
 ): Promise<ResponseLpListDto> => {
+  console.log("getLpList 호출됨, pagination:", pagination);
     const {data} = await axiosInstance.get('/v1/lps', {
         params: pagination
     });
-    console.log(pagination)
+
     return data;   
 }
 

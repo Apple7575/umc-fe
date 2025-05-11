@@ -4,13 +4,11 @@ import { PAGINATION_ORDER } from "../enums/common.ts";
 import { useInView } from "react-intersection-observer";
 import LpCard from "../components/Lpcard/LpCard.tsx";
 import LpCardSkeletonList from "../components/Lpcard/LpCardSkeletonList.tsx";
+import useDebounce from "../hooks/useDebounce.ts";
 
 const HomePage = () => {
   const [search, setSearch] = useState("");
-  // const { data, isPending, isError } = useGetLpList({
-  //   search,
-  //   limit: 50,
-  // });
+  const debouncedValue = useDebounce(search, 300)
 
   const {
     data: lps, // InfiniteData<ResponseLpListDto>
@@ -19,11 +17,10 @@ const HomePage = () => {
     isPending, // boolean
     fetchNextPage,
     isError, // boolean
-  } = useGetInfiniteLpList(10, search, PAGINATION_ORDER.asc);
+  } = useGetInfiniteLpList(10, debouncedValue, PAGINATION_ORDER.asc);
 
-  // ref, inView
-  // ref -> 특정한 HTML 요소를 감시할 수 있다.
-  // inView -> 그 요소가 화면에 보이면 true
+
+
   const { ref, inView } = useInView({
     threshold: 0,
   });
@@ -42,7 +39,7 @@ const HomePage = () => {
     return <div className="mt-20">Error...</div>;
   }
   
-
+  console.log("search:", search, "debouncedValue:", debouncedValue);
 
   return (
     <div className="container mx-auto px-4 py-6">
