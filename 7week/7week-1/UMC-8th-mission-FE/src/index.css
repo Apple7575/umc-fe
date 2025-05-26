@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+body {
+  background-color: #f8fafc;
+}
 body.light {
   background: #f8fafc;
   color: #222;

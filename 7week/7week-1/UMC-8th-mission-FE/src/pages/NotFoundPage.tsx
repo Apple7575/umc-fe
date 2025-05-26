@@ -1,5 +1,11 @@
+import PageLayout from "../components/PageLayout";
+
 const NotFoundPage = () => {
-    return <div>Notfound</div>
+    return (
+        <PageLayout>
+            <div>Notfound</div>
+        </PageLayout>
+    );
 }
 
 export default NotFoundPage;  

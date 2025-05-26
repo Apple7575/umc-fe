@@ -57,8 +57,8 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         alert('로그인에 성공했습니다.');
         window.location.href = '/my';
       }
-    } catch (error) {
-        console.error('login error', error);
+    } catch (error: any) {
+        console.error('login error', error.response?.data || error);
         alert('로그인에 실패했습니다. 다시 시도해주세요.');
     }
     };

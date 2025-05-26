@@ -1,5 +1,3 @@
-
-
 import {RequestSigninDto, RequestSignupDto, ResponseMyInfoDto, ResponseSigninDto, ResponseSignupDto} from "../types/auth.ts";
 import { axiosInstance } from "./axios.ts";
 
@@ -30,3 +28,8 @@ export const postLogout = async () => {
 
     return data;
 };
+
+export const loginApi = async ({ email, password }: { email: string; password: string }) => {
+    const { data } = await axiosInstance.post("/v1/auth/signin", { email, password });
+    return data; // 서버에서 accessToken, refreshToken 등 반환
+  };

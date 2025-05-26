@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage.ts";
 import { LOCAL_STORAGE_KEY } from "../constants/key.ts";
+import PageLayout from "../components/PageLayout";
 
 const GoogleLoginRedirectPage = () => {
  const { setItem: setAccessToken } = useLocalStorage(
@@ -23,7 +24,11 @@ const GoogleLoginRedirectPage = () => {
    }
  },  [setAccessToken, setRefreshToken]);
  
- return <div>구글 로그인 리다이렉트 화면</div>;
+ return (
+   <PageLayout>
+     <div>구글 로그인 리다이렉트 화면</div>
+   </PageLayout>
+ );
 };
 
 export default GoogleLoginRedirectPage;

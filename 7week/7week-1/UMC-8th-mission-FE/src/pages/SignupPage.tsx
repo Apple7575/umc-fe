@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { z }  from 'zod';
 import { postSignup } from '../apis/auth';
+import PageLayout from "../components/PageLayout";
 
 
 const schema = z.object({
@@ -48,59 +49,61 @@ const SignupPage = () => {
     
 
     return (
-        <div className='flex flex-col items-center justify-center h-full gap-4'>
-            <div className='flex flex-col gap-3'>
-                <input 
-                    {...register('email')}
-                    name="email"
-                    className={`border border-[#ccc] w-[300px] p-[10px] focus:border-[#807bff] rounded-sm
-                        ${errors?.email ? "border-red-500 bg-red-200" : "border-gray-300"}`}
-                    type={"email"}
-                    placeholder="이메일"
-                />
-                {errors.email && <div className={'text-red-500 text-sm'}>{errors.email.message}</div>}
+        <PageLayout>
+            <div className='flex flex-col items-center justify-center h-full gap-4'>
+                <div className='flex flex-col gap-3'>
+                    <input 
+                        {...register('email')}
+                        name="email"
+                        className={`border border-[#ccc] w-[300px] p-[10px] focus:border-[#807bff] rounded-sm
+                            ${errors?.email ? "border-red-500 bg-red-200" : "border-gray-300"}`}
+                        type={"email"}
+                        placeholder="이메일"
+                    />
+                    {errors.email && <div className={'text-red-500 text-sm'}>{errors.email.message}</div>}
 
-               
-                <input
-                {...register('password')}
-                    name="password"
-                    className={`border border-[#ccc] w-[300px] p-[10px] focus:border-[#807bff] rounded-sm
-                        ${errors?.email ? "border-red-500 bg-red-200" : "border-gray-300"}`}
-                    type={"password"}
-                    placeholder={"비밀번호"}
-                />
-                {errors.password && <div className={'text-red-500 text-sm'}>{errors.password.message}</div>}
+                   
+                    <input
+                    {...register('password')}
+                        name="password"
+                        className={`border border-[#ccc] w-[300px] p-[10px] focus:border-[#807bff] rounded-sm
+                            ${errors?.email ? "border-red-500 bg-red-200" : "border-gray-300"}`}
+                        type={"password"}
+                        placeholder={"비밀번호"}
+                    />
+                    {errors.password && <div className={'text-red-500 text-sm'}>{errors.password.message}</div>}
 
-                <input
-                {...register('passwordCheck')}
-                    name="passwordCheck"
-                    className={`border border-[#ccc] w-[300px] p-[10px] focus:border-[#807bff] rounded-sm
-                        ${errors?.passwordCheck ? "border-red-500 bg-red-200" : "border-gray-300"}`}
-                    type="password" // 수정된 부분
-                    placeholder="비밀번호 확인"
-                />
-                {errors.passwordCheck && <div className={'text-red-500 text-sm'}>{errors.passwordCheck.message}</div>}
-                
-                <input
-                {...register('name')}
-                    name="name"
-                    className={`border border-[#ccc] w-[300px] p-[10px] focus:border-[#807bff] rounded-sm
-                        ${errors?.email ? "border-red-500 bg-red-200" : "border-gray-300"}`}
-                    type={"name"}
-                    placeholder={"이름"}
-                />
-                {errors.name && <div className={'text-red-500 text-sm'}>{errors.name.message}</div>}
+                    <input
+                    {...register('passwordCheck')}
+                        name="passwordCheck"
+                        className={`border border-[#ccc] w-[300px] p-[10px] focus:border-[#807bff] rounded-sm
+                            ${errors?.passwordCheck ? "border-red-500 bg-red-200" : "border-gray-300"}`}
+                        type="password" // 수정된 부분
+                        placeholder="비밀번호 확인"
+                    />
+                    {errors.passwordCheck && <div className={'text-red-500 text-sm'}>{errors.passwordCheck.message}</div>}
+                    
+                    <input
+                    {...register('name')}
+                        name="name"
+                        className={`border border-[#ccc] w-[300px] p-[10px] focus:border-[#807bff] rounded-sm
+                            ${errors?.email ? "border-red-500 bg-red-200" : "border-gray-300"}`}
+                        type={"name"}
+                        placeholder={"이름"}
+                    />
+                    {errors.name && <div className={'text-red-500 text-sm'}>{errors.name.message}</div>}
 
-                <button
-                disabled={isSubmitting}
-                type="button"
-                onClick={handleSubmit(onSubmit)}
-                className='w-full bg-blue-600 text-white py-3 rounded-md text-lg font-medium hover:bg-blue-700 transition-colors curosor-pointer disabled:bg-gray-300'
-                >
-                    회원가입
-                </button>
+                    <button
+                    disabled={isSubmitting}
+                    type="button"
+                    onClick={handleSubmit(onSubmit)}
+                    className='w-full bg-blue-600 text-white py-3 rounded-md text-lg font-medium hover:bg-blue-700 transition-colors curosor-pointer disabled:bg-gray-300'
+                    >
+                        회원가입
+                    </button>
+                </div>
             </div>
-        </div>
+        </PageLayout>
     )
 };
 
